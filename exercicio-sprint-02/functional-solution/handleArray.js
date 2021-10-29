@@ -40,6 +40,7 @@ function getNameByID(id, list) {
 // ITEM C
 function removeIdFromArray(id, list) {
     let removedProgrammer = list.filter((prog) => prog.id !== id); // seleciona todos os id, excluindo o desejado
+    console.log("Remove Id From Array : Functional");
     return removedProgrammer; //  retorna um array excluindo o selecionado
 }
 // ITEM D
@@ -54,15 +55,17 @@ function changeBioNameById(id, list, toChange, content) {
     // checa o que se quer alterar(name ou bio)
     if (toChange === "name") { // alterar name
         removeIndex.push({ id: whatChange.id, name: content, bio: whatChange.bio }); // insere no array "removeIndex" um objeto com o id e bio do array alterado
+        console.log("Changing name using Id : Functional");
         return orderArray();
     }
     else {
         removeIndex.push({ id: whatChange.id, name: whatChange.name, bio: content }); // insere no array "removeIndex" um objeto com o id e bio do array alterado
+        console.log("Changing bio using Id : Functional");
         return orderArray();
     }
 }
-console.log(getBioByID(1, lista));
-console.log(getNameByID(1, lista));
+console.log(`Get Bio by Id Functional = ${getBioByID(1, lista)}`);
+console.log(`Get Name by Id Functional = ${getNameByID(1, lista)}`);
 console.log(removeIdFromArray(1, lista));
 console.log(changeBioNameById(1, lista, "name", "Cauê")); // mudando o "name" 
 console.log(changeBioNameById(1, lista, "bio", "Talvez esse seja seu último código!")); // mudando o "bio" 
