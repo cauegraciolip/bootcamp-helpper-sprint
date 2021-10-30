@@ -1,21 +1,30 @@
-const input : number[] | string = [10, 10, 45, 21, 6, 71, 1, 22, 3];
+const input : number[] = [10, 9, 4, 3, 7, 12, 3, 4];
 
-let maior : number | string = input[0];
-let menor : number | string = input[0];
+let maior : number = input[0];
+let menor : number = input[0];
+let acc = 0;
 
-for(let i of input) {
-    
-    if(i < menor) {
-        menor = i;
-        i++
-    } else if (i > maior){
-        maior = i
-         i++
-    } else {
-        i++
-    }
+const findMinorMajorAndMedia = (arr : Array<number>) : Array<number> => {
+    for(let index of arr) {
+        
+        // acumula os valores dentro de acc;
+        acc += index;
+
+        // confere se o index é menor ou maior que os atribuidos nas variaveis e atribui um novo valor caso true;
+        if(index < menor) {
+            menor = index;
+        } else if (index > maior){
+            maior = index
+        } else {
+           index++
+        }
+    };
+
+    // media do acumulado
+    const media : number = acc / arr.length;
+
+    return [maior, menor, media];
+
 }
 
-console.log(maior, menor)
-
-    
+console.log(findMinorMajorAndMedia(input))
