@@ -24,7 +24,7 @@ var lista = [
 ];
 function showTableContent() {
     lista.forEach(function (element) {
-        table.innerHTML += "<td>" + element.id.toString() + "</td> <td>" + element.name.toString() + "</td> <td>" + element.bio.toString() + "</td>";
+        table.innerHTML += "<tr><td>" + element.id.toString() + "</td> <td>" + element.name.toString() + "</td> <td>" + element.bio.toString() + "</td></tr>";
     });
 }
 ;
