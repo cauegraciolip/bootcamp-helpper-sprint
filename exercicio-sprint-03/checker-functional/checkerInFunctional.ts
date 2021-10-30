@@ -9,6 +9,3 @@ function checkMaxAndMin(arr: Array<number>): number[]{
 
 checkMaxAndMin(inputArray)
 
-
-
-
