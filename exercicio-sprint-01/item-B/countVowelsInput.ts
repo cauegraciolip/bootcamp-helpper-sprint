@@ -1,15 +1,15 @@
 // função que conta vogais a partir de input
-let input = document.getElementById('textInput') as HTMLInputElement;
+const input = document.getElementById('textInput') as HTMLInputElement;
 
 input.addEventListener('input', (event) => {
-     function countInput(): number {
+     function countInput(): number | void {
           // declara a variavel como um elemento input HTML
-          let arrVowelsInput = event.currentTarget as HTMLInputElement;
+          const arrVowelsInput: HTMLInputElement = event.currentTarget as HTMLInputElement;
           // separa as vogais do input em um array
-          let countVowels = arrVowelsInput.value.match(/['aeiou]/gi) as RegExpMatchArray
+          const countVowels: RegExpMatchArray = arrVowelsInput.value.match(/['aeiou]/gi) as RegExpMatchArray
           // conta a quantidade de itens no array
           if(countVowels === null) {
-               console.error("INPUT VAZIO")
+               return console.error("INPUT VAZIO")
           }
           return countVowels.length
      }
