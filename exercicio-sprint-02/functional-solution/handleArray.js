@@ -1,4 +1,5 @@
 "use strict";
+;
 let lista = [
     {
         id: 1,
@@ -23,7 +24,7 @@ let lista = [
 ];
 // ITEM A
 function getBioByID(id, list) {
-    let programmer = list.find((prog) => prog.id === id); // encontra o id desejado
+    const programmer = list.find((prog) => prog.id === id); // encontra o id desejado
     if (programmer.id === undefined) { // se o id for inválido retorno um erro
         return "id inválido";
     }
@@ -31,7 +32,7 @@ function getBioByID(id, list) {
 }
 // ITEM B
 function getNameByID(id, list) {
-    let programmer = list.find((prog) => prog.id === id); // encontra o id desejado
+    const programmer = list.find((prog) => prog.id === id); // encontra o id desejado
     if (programmer.id === undefined) { // id inválido retorna erro
         return "id inválido";
     }
@@ -39,30 +40,24 @@ function getNameByID(id, list) {
 }
 // ITEM C
 function removeIdFromArray(id, list) {
-    let removedProgrammer = list.filter((prog) => prog.id !== id); // seleciona todos os id, excluindo o desejado
+    const removedProgrammer = list.filter((prog) => prog.id !== id); // seleciona todos os id, excluindo o desejado
     console.log("Remove Id From Array : Functional");
     return removedProgrammer; //  retorna um array excluindo o selecionado
 }
 // ITEM D
 // função para alterar name ou bio -- recebe 4 parametros(id, a lista, o que quer alterar * deve ser passado como string ("name" / "bio") *, e o conteudo da alteração) 
 function changeBioNameById(id, list, toChange, content) {
-    let whatChange = list.find((prog) => prog.id === id); // pega o id desejado, utilizado para retornar um clone do objeto
-    let removeIndex = list.filter((prog) => prog.id !== id); // retorna uma lista excluindo o id desejado
-    if (whatChange.id === undefined) { // id inválido retorna erro
-        alert("id inválido");
+    let findId = list.find((prog) => prog.id !== id); // retorna uma lista excluindo o id desejado
+    let changed = findId;
+    if (toChange === "name") {
+        changed.name = content;
+        return findId;
     }
-    const orderArray = () => removeIndex.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0); // função sort para manter a ordem do array
-    // checa o que se quer alterar(name ou bio)
-    if (toChange === "name") { // alterar name
-        removeIndex.push({ id: whatChange.id, name: content, bio: whatChange.bio }); // insere no array "removeIndex" um objeto com o id e bio do array alterado
-        console.log("Changing name using Id : Functional");
-        return orderArray();
+    else if (toChange === "bio") {
+        changed.bio = content;
+        return findId;
     }
-    else {
-        removeIndex.push({ id: whatChange.id, name: whatChange.name, bio: content }); // insere no array "removeIndex" um objeto com o id e bio do array alterado
-        console.log("Changing bio using Id : Functional");
-        return orderArray();
-    }
+    return findId;
 }
 console.log(`Get Bio by Id Functional = ${getBioByID(1, lista)}`);
 console.log(`Get Name by Id Functional = ${getNameByID(1, lista)}`);

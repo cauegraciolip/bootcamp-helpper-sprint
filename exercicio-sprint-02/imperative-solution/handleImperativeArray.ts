@@ -2,7 +2,7 @@ interface IProgrammers {
     id: number;
     name: string;
     bio: string;
-}
+};
 
 let listImperative: Array<IProgrammers> = [
     {
@@ -30,33 +30,33 @@ function findBioById (id: number, list: Array<IProgrammers>) : string {
     let bio;
     for(let index of list) {
         if(index.id === id) {
-            return bio = index.bio
+            return bio = index.bio;
         }
     }
-    console.log("Fing Bio using id : Imperative")
-    return `Bio: ${bio}`
+    console.log("Fing Bio using id : Imperative");
+    return `Bio: ${bio}`;
 }
 
 function findNameById (id: number, list : Array<IProgrammers>) : string {
     let name;
     for(let index of list) {
         if (index.id === id) {
-            return name = index.name
+            return name = index.name;
         }
     }
-    console.log("Find Name using Id : Imperative")
-    return `Nome: ${name}`
+    console.log("Find Name using Id : Imperative");
+    return `Nome: ${name}`;
 }
 
 function removeThisId(id: number, list: Array<IProgrammers>) : Array<IProgrammers> {
-    let newArray = []
+    let newArray = [];
     for(let index of list) {
         if(index.id !== id) {
-            newArray.push(index)
+            newArray.push(index);
         }
     }
-    console.log("Remove Id from array : Imperative")
-    return newArray
+    console.log("Remove Id from array : Imperative");
+    return newArray;
 }
 
 function changeThisId(id: number, list: Array<IProgrammers>, selected: string, content: string) : any {
@@ -64,15 +64,15 @@ function changeThisId(id: number, list: Array<IProgrammers>, selected: string, c
         if(list[i].id === id) {
             let receiveChanged;
             if(selected === "name") {
-                receiveChanged = {id: list[i].id, name: content, bio: list[i].bio}
+                receiveChanged = {id: list[i].id, name: content, bio: list[i].bio};
             } 
 
             else {
-                receiveChanged = {id: list[i].id, name: list[i].name, bio: content}
+                receiveChanged = {id: list[i].id, name: list[i].name, bio: content};
 
             }
-            console.log("Changing name or bio using Id : Imperative")
-            return receiveChanged
+            console.log("Changing name or bio using Id : Imperative");
+            return receiveChanged;
         }
         
     }
@@ -80,10 +80,10 @@ function changeThisId(id: number, list: Array<IProgrammers>, selected: string, c
 }
 
 
-console.log(`Get Bio by Id Imperative = ${findBioById(1, listImperative)}`)
-console.log(`Get Bio by Id Imperative = ${findNameById(1, listImperative)}`)
-console.log(removeThisId(2, listImperative))
+console.log(`Get Bio by Id Imperative = ${findBioById(1, listImperative)}`);
+console.log(`Get Bio by Id Imperative = ${findNameById(1, listImperative)}`);
+console.log(removeThisId(2, listImperative));
 
 // teste item D
-console.log(changeThisId(1, listImperative, "name", "Novo Nome"))
-console.log(changeThisId(1, listImperative, "bio", "Nova Bio"))
+console.log(changeThisId(1, listImperative, "name", "Novo Nome"));
+console.log(changeThisId(1, listImperative, "bio", "Nova Bio"));

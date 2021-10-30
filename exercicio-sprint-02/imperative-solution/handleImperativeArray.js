@@ -1,4 +1,5 @@
 "use strict";
+;
 let listImperative = [
     {
         id: 1,
