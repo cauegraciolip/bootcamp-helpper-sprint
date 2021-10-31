@@ -10,14 +10,9 @@
 <body>
     
     <h1>Exercício 04</h1>
-    <table id="table-to-list" border="1px" width="40%">
-        <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>BIO</th>
-        </tr>
-        
-    </table>
+    
+    <table id="table-to-list" border="2px" width="50%"></table>
+
     <form action="edit-table" id="edit-form">
         <input type="number" name="id" id="number-id" placeholder="Escolha o ID" min="1">
         <select name="select-id" id="select-edit">
@@ -26,7 +21,7 @@
         </select>
         <input type="text" name="content" id="content-edit">
     </form>
-    <button id="edit-table" onclick="setEdit(this)">Editar</button>
+    <button id="edit-table" onclick="setEdit()">Editar</button>
 
 <script src="./edit-table-repo/listItemTable.js"></script>   
 </body>
