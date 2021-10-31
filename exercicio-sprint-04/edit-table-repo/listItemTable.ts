@@ -1,4 +1,7 @@
 const table : HTMLTableElement = document.getElementById('table-to-list') as HTMLTableElement
+const tableId : HTMLInputElement= document.getElementById("number-id") as HTMLInputElement;
+const property : HTMLSelectElement = document.getElementById("select-edit") as HTMLSelectElement;
+const tableContent : HTMLInputElement = document.getElementById("content-edit") as HTMLInputElement;
 
 const button : HTMLButtonElement = document.getElementById("edit-table") as HTMLButtonElement
 
@@ -33,18 +36,19 @@ let lista: Array<IPerson> = [
 
 
 // ITEM A
+function showThisTable() : void {
+    table.innerHTML = ""
+    lista.forEach((element) => {
+        table.innerHTML += `<td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td>`
+    })
+};
 
-lista.forEach((element) : void => {
-    table.innerHTML += `<td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td>`
-})  
+showThisTable()
 
 
 // ITEM B
 
-function setEdit () : IPerson{
-    const tableId : HTMLInputElement= document.getElementById("number-id") as HTMLInputElement;
-    const property : HTMLSelectElement = document.getElementById("select-edit") as HTMLSelectElement;
-    const tableContent : HTMLInputElement = document.getElementById("content-edit") as HTMLInputElement;
+function setEdit() : void{
 
     let optionValue : string = property.options[property.selectedIndex].value;
 
@@ -58,22 +62,16 @@ function setEdit () : IPerson{
     
         changed.name = tableContent.value
 
-        console.log(lista)
-
-        return findPeople
+        return showThisTable()
 
     } else if (optionValue === "bio") {
 
         changed.bio = tableContent.value
-
-        console.log(lista)
         
-        return findPeople
+        return showThisTable()
     }
 
-    console.log(findPeople)
-
-    return findPeople
+    return showThisTable()
 }
 
 

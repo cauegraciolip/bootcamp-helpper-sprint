@@ -1,5 +1,8 @@
 "use strict";
 const table = document.getElementById('table-to-list');
+const tableId = document.getElementById("number-id");
+const property = document.getElementById("select-edit");
+const tableContent = document.getElementById("content-edit");
 const button = document.getElementById("edit-table");
 let lista = [
     {
@@ -24,28 +27,27 @@ let lista = [
     }
 ];
 // ITEM A
-lista.forEach((element) => {
-    table.innerHTML += `<td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td>`;
-});
+function showThisTable() {
+    table.innerHTML = "";
+    lista.forEach((element) => {
+        table.innerHTML += `<td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td>`;
+    });
+}
+;
+showThisTable();
 // ITEM B
 function setEdit() {
-    const tableId = document.getElementById("number-id");
-    const property = document.getElementById("select-edit");
-    const tableContent = document.getElementById("content-edit");
     let optionValue = property.options[property.selectedIndex].value;
     let numberTableId = parseInt(tableId.value);
     let findPeople = lista.find((person) => person.id === numberTableId);
     let changed = findPeople;
     if (optionValue === "name") {
         changed.name = tableContent.value;
-        console.log(lista);
-        return findPeople;
+        return showThisTable();
     }
     else if (optionValue === "bio") {
         changed.bio = tableContent.value;
-        console.log(lista);
-        return findPeople;
+        return showThisTable();
     }
-    console.log(findPeople);
-    return findPeople;
+    return showThisTable();
 }
