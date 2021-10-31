@@ -35,11 +35,13 @@ let lista: Array<IPerson> = [
 ];
 
 
+tableId.setAttribute('max', `${lista.length}`)
+
 // ITEM A
 function showThisTable() : void {
-    table.innerHTML = ""
+    table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>"
     lista.forEach((element) => {
-        table.innerHTML += `<td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td>`
+        table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td></tr>`
     })
 };
 

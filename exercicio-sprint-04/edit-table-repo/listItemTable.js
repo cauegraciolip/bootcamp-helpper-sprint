@@ -26,11 +26,12 @@ let lista = [
         bio: "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."
     }
 ];
+tableId.setAttribute('max', `${lista.length}`);
 // ITEM A
 function showThisTable() {
-    table.innerHTML = "";
+    table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>";
     lista.forEach((element) => {
-        table.innerHTML += `<td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td>`;
+        table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td></tr>`;
     });
 }
 ;
