@@ -26,8 +26,10 @@ let lista = [
         bio: "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar."
     }
 ];
-tableId.setAttribute('max', `${lista.length}`);
+tableId.setAttribute('max', `${lista.length}`); // limite o input é o tamanho da lista
 // ITEM A
+// a função recebe o conteúdo inicial e concatena com o contéudo da lista
+// a função sempre vai iniciar com table.innerHTML abaixo, para que caso tenha alterção com CTA, seja mostrado em tela
 function showThisTable() {
     table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>";
     lista.forEach((element) => {
@@ -38,10 +40,16 @@ function showThisTable() {
 showThisTable();
 // ITEM B
 function setEdit() {
+    // pega a selecao do input, se é name ou bio
     let optionValue = property.options[property.selectedIndex].value;
+    // pega o numero selecionado no input tipo number
     let numberTableId = parseInt(tableId.value);
+    // acha o index que foi selecionado no numberTableId
     let findPeople = lista.find((person) => person.id === numberTableId);
+    // variavel utilizada como referencia 
     let changed = findPeople;
+    // if que verifica o que foi selecionado no optionValue para entao mostrar na lista
+    // sempre irá retornar a função showThisTable() com o novo conteúdo
     if (optionValue === "name") {
         changed.name = tableContent.value;
         return showThisTable();
