@@ -35,51 +35,55 @@ let lista: Array<IPerson> = [
 ];
 
 
-tableId.setAttribute('max', `${lista.length}`) // limite o input é o tamanho da lista
+tableId.setAttribute('max', `${lista.length}`) // limite do input é o tamanho da lista
 
-// ITEM A
+// ITEM A e B
 
 // a função recebe o conteúdo inicial e concatena com o contéudo da lista
 // a função sempre vai iniciar com table.innerHTML abaixo, para que caso tenha alterção com CTA, seja mostrado em tela
-function showThisTable() : void {
+function showThisTable(arr : Array<IPerson>) : void {
+    let initialId : number = 0;
     table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>"
-    lista.forEach((element) => {
+    arr.forEach((element) => {
         table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td></tr>`
     })
 };
 
-showThisTable()
+showThisTable(lista)
 
 
-// ITEM B
+// ITEM C
 
 function setEdit() : void{
     // pega a selecao do input, se é name ou bio
-    let optionValue : string = property.options[property.selectedIndex].value;
+    const optionValue : string = property.options[property.selectedIndex].value;
     // pega o numero selecionado no input tipo number
-    let numberTableId : number = parseInt(tableId.value);
+    const numberTableId : number = parseInt(tableId.value);
     // acha o index que foi selecionado no numberTableId
-    let findPeople : IPerson = lista.find((person) => person.id === numberTableId) as IPerson;
-    // variavel utilizada como referencia 
-    let changed : IPerson = findPeople
+    let findPeople : IPerson = lista.find((person : IPerson) => person.id === numberTableId) as IPerson;
+    // filtro para caso o usuário queira excluir um item da lista
+    const filterList : Array<IPerson> = lista.filter((element) => element.id !== numberTableId);
 
     // if que verifica o que foi selecionado no optionValue para entao mostrar na lista
     // sempre irá retornar a função showThisTable() com o novo conteúdo
     if(optionValue === "name") {
     
-        changed.name = tableContent.value
+        findPeople.name = tableContent.value
 
-        return showThisTable()
+        return showThisTable(lista)
 
     } else if (optionValue === "bio") {
 
-        changed.bio = tableContent.value
+        findPeople.bio = tableContent.value
         
-        return showThisTable()
+        return showThisTable(lista)
+
+    } else if (optionValue === "excluir") {
+
+        return showThisTable(filterList)
+
     }
 
-    return showThisTable()
+    return showThisTable(lista)
 }
 
-
-  
