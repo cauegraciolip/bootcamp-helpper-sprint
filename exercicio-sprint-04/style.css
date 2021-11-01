@@ -1,3 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#main {
+    margin: auto;
+    text-align: center;
+}
+
+#main table {
+    margin: auto;
+}
+
 #number-id {
     outline: none;
 }
@@ -5,4 +19,30 @@
 #number-id:out-of-range {
     border: none;
     border: 1px solid red;
+}
+
+#control-table {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: auto;
+    padding-top: 10px;
+}
+
+#edit-form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#select-edit, #edit-table, #content-edit, #number-id {
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+#chose-id, #input-text {
+    display: flex;
+    flex-direction: column;
+    padding-right: 5px;
+    text-align: left;
 }

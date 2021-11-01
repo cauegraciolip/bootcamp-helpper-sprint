@@ -9,19 +9,31 @@
 </head>
 <body>
     
-    <h1>Exercício 04</h1>
-    
-    <table id="table-to-list" border="2px" width="50%"></table>
+    <main id="main">
 
-    <form action="edit-table" id="edit-form">
-        <input type="number" name="id" id="number-id" placeholder="Escolha o ID" min="1">
-        <select name="select-id" id="select-edit">
-            <option value="name">Name</option>
-            <option value="bio">Bio</option>
-        </select>
-        <input type="text" name="content" id="content-edit">
-    </form>
-    <button id="edit-table" onclick="setEdit()">Editar</button>
+        <h1>Exercício 04</h1>
+
+        <table id="table-to-list" border="2px" width="50%"></table>
+
+        <div id="control-table">
+            <form action="edit-table" id="edit-form">
+                <div id="chose-id">
+                    <label for="">Escolha um ID</label>
+                    <input type="number" name="id" id="number-id" placeholder="Escolha o ID" min="1">
+                </div>
+                <select name="select-id" id="select-edit">
+                    <option value="name">Name</option>
+                    <option value="bio">Bio</option>
+                </select>
+                <div id="input-text">
+                    <label for="content">Texto</label>
+                    <input type="text" name="content" id="content-edit">
+                </div>
+            </form>
+            <button id="edit-table" onclick="setEdit()">Editar</button>
+        </div>
+
+    </main>
 
 <script src="./edit-table-repo/listItemTable.js"></script>   
 </body>
