@@ -4,6 +4,7 @@ const tableId = document.getElementById("number-id");
 const property = document.getElementById("select-edit");
 const tableContent = document.getElementById("content-edit");
 const button = document.getElementById("edit-table");
+;
 let lista = [
     {
         id: 1,
@@ -31,7 +32,6 @@ tableId.setAttribute('max', `${lista.length}`); // limite do input é o tamanho 
 // a função recebe o conteúdo inicial e concatena com o contéudo da lista
 // a função sempre vai iniciar com table.innerHTML abaixo, para que caso tenha alterção com CTA, seja mostrado em tela
 function showThisTable(arr) {
-    let initialId = 0;
     table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>";
     arr.forEach((element) => {
         table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td></tr>`;
@@ -62,5 +62,7 @@ function setEdit() {
     else if (optionValue === "excluir") {
         return showThisTable(filterList);
     }
+    ;
     return showThisTable(lista);
 }
+;

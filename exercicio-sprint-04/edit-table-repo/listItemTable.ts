@@ -1,15 +1,15 @@
-const table : HTMLTableElement = document.getElementById('table-to-list') as HTMLTableElement
+const table : HTMLTableElement = document.getElementById('table-to-list') as HTMLTableElement;
 const tableId : HTMLInputElement= document.getElementById("number-id") as HTMLInputElement;
 const property : HTMLSelectElement = document.getElementById("select-edit") as HTMLSelectElement;
 const tableContent : HTMLInputElement = document.getElementById("content-edit") as HTMLInputElement;
 
-const button : HTMLButtonElement = document.getElementById("edit-table") as HTMLButtonElement
+const button : HTMLButtonElement = document.getElementById("edit-table") as HTMLButtonElement;
 
 interface IPerson {
     id: number;
     name: string;
     bio: string;
-}
+};
 
 let lista: Array<IPerson> = [
     {
@@ -35,21 +35,20 @@ let lista: Array<IPerson> = [
 ];
 
 
-tableId.setAttribute('max', `${lista.length}`) // limite do input é o tamanho da lista
+tableId.setAttribute('max', `${lista.length}`); // limite do input é o tamanho da lista
 
 // ITEM A e B
 
 // a função recebe o conteúdo inicial e concatena com o contéudo da lista
 // a função sempre vai iniciar com table.innerHTML abaixo, para que caso tenha alterção com CTA, seja mostrado em tela
 function showThisTable(arr : Array<IPerson>) : void {
-    let initialId : number = 0;
-    table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>"
+    table.innerHTML = "<tr><th>ID</th><th>NAME</th><th>BIO</th></tr>";
     arr.forEach((element) => {
         table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td> <td>${element.bio.toString()}</td></tr>`
     })
 };
 
-showThisTable(lista)
+showThisTable(lista);
 
 
 // ITEM C
@@ -68,22 +67,22 @@ function setEdit() : void{
     // sempre irá retornar a função showThisTable() com o novo conteúdo
     if(optionValue === "name") {
     
-        findPeople.name = tableContent.value
+        findPeople.name = tableContent.value;
 
-        return showThisTable(lista)
+        return showThisTable(lista);
 
     } else if (optionValue === "bio") {
 
-        findPeople.bio = tableContent.value
+        findPeople.bio = tableContent.value;
         
-        return showThisTable(lista)
+        return showThisTable(lista);
 
     } else if (optionValue === "excluir") {
 
-        return showThisTable(filterList)
+        return showThisTable(filterList);
 
-    }
+    };
 
-    return showThisTable(lista)
-}
+    return showThisTable(lista);
+};
 
