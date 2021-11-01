@@ -9,7 +9,13 @@
 }
 
 #main table {
+    width: 700px;
     margin: auto;
+}
+
+table img {
+    width: 20px;
+    cursor: pointer;
 }
 
 #number-id {
