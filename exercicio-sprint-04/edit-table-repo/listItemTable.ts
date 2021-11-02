@@ -53,7 +53,7 @@ showThisTable(lista);
 
 // ITEM C
 
-function setEdit() : void{
+function setEdit() : void {
     // pega a selecao do input, se é name ou bio
     const optionValue : string = property.options[property.selectedIndex].value;
     // pega o numero selecionado no input tipo number
