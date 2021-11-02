@@ -11,6 +11,7 @@
 #main table {
     width: 700px;
     margin: auto;
+    border: none;
 }
 
 table img {
