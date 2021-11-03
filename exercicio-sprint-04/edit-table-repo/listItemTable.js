@@ -33,10 +33,9 @@ const myTable = "<tr><th>ID</th><th>NAME</th><th>BIO</th><th>&nbsp;</th></tr>";
 // a função recebe o conteúdo inicial e concatena com o contéudo da lista
 // a função sempre vai iniciar com table.innerHTML abaixo, para que caso tenha alterção com CTA, seja mostrado em tela
 function showThisTable(arr) {
-    let initialValue = 0;
     table.innerHTML = myTable;
     arr.forEach((element) => {
-        table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td><td>${element.bio.toString()}</td><td><img class="delete-button" id="${initialValue += 1}" src="./times-circle-solid.svg" alt=""></td></tr>`;
+        table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td><td>${element.bio.toString()}</td><td><img class="delete-button" id="${element.id}" src="./times-circle-solid.svg" alt=""></td></tr>`;
     });
 }
 ;
@@ -67,14 +66,15 @@ function setEdit() {
 const deleteButton = document.querySelectorAll('.delete-button');
 let newList = [];
 deleteButton.forEach((element) => {
+    const personId = parseInt(element.id);
     element.addEventListener('click', function deleteThisItem() {
-        const personId = parseInt(element.id);
         for (let i of lista) {
             if (i.id === personId) {
-                newList = lista.filter((element) => element.id !== i.id);
+                lista = lista.filter((element) => element.id != i.id);
             }
+            ;
         }
-        console.log(newList);
-        return showThisTable(newList);
+        ;
+        return showThisTable(lista);
     });
 });
