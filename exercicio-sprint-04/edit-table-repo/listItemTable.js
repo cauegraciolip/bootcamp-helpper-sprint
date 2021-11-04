@@ -35,7 +35,12 @@ const myTable = "<tr><th>ID</th><th>NAME</th><th>BIO</th><th>&nbsp;</th></tr>";
 function showThisTable(arr) {
     table.innerHTML = myTable;
     arr.forEach((element) => {
-        table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td><td>${element.bio.toString()}</td><td><img class="delete-button" id="${element.id}" src="./times-circle-solid.svg" alt=""></td></tr>`;
+        table.innerHTML += `<tr>
+                                <td>${element.id.toString()}</td> 
+                                <td>${element.name.toString()}</td>
+                                <td>${element.bio.toString()}</td>
+                                <td><img class="delete-button" onclick="deleteThisItem(this)" id="${element.id}" src="./times-circle-solid.svg" alt=""></td>
+                            </tr>`;
     });
 }
 ;
@@ -63,18 +68,14 @@ function setEdit() {
 }
 ;
 // ======
-const deleteButton = document.querySelectorAll('.delete-button');
-let newList = [];
-deleteButton.forEach((element) => {
-    const personId = parseInt(element.id);
-    element.addEventListener('click', function deleteThisItem() {
-        for (let i of lista) {
-            if (i.id === personId) {
-                lista = lista.filter((element) => element.id != i.id);
-            }
-            ;
+let deleteButton = document.querySelectorAll('.delete-button');
+let personId;
+function deleteThisItem(element) {
+    personId = parseInt(element.id);
+    for (let i of lista) {
+        if (i.id === personId) {
+            lista = lista.filter((element) => element.id !== i.id);
         }
-        ;
-        return showThisTable(lista);
-    });
-});
+    }
+    return showThisTable(lista);
+}

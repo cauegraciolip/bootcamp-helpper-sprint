@@ -47,7 +47,12 @@ const myTable : string = "<tr><th>ID</th><th>NAME</th><th>BIO</th><th>&nbsp;</th
 function showThisTable(arr : Array<IPerson>) : void {
     table.innerHTML = myTable;
     arr.forEach((element) => {
-        table.innerHTML += `<tr><td>${element.id.toString()}</td> <td>${element.name.toString()}</td><td>${element.bio.toString()}</td><td><img class="delete-button" id="${element.id}" src="./times-circle-solid.svg" alt=""></td></tr>`
+        table.innerHTML += `<tr>
+                                <td>${element.id.toString()}</td> 
+                                <td>${element.name.toString()}</td>
+                                <td>${element.bio.toString()}</td>
+                                <td><img class="delete-button" onclick="deleteThisItem(this)" id="${element.id}" src="./times-circle-solid.svg" alt=""></td>
+                            </tr>`
     })
 };
 
@@ -85,20 +90,17 @@ function setEdit() : void {
 
 // ======
 
-const deleteButton = document.querySelectorAll('.delete-button');
-let newList : Array<IPerson> = [];
+let deleteButton : NodeListOf<Element> = document.querySelectorAll('.delete-button');
+let personId : number;
 
-deleteButton.forEach((element : Element) : void => {
-    const personId : number = parseInt(element.id);
-    element.addEventListener('click', function deleteThisItem() : void {
-        for(let i of lista) {
-            if (i.id === personId) {
-                lista = lista.filter((element) => element.id != i.id)
-            };
+function deleteThisItem(element : Element) : void {
+    personId = parseInt(element.id)
+    for (let i of lista) {
+        if(i.id === personId) {
+            lista = lista.filter((element) => element.id !== i.id);
+        }
+    }
 
-        };
-        return showThisTable(lista);
-    });
-
-});
+    return showThisTable(lista)
+}
 
