@@ -1,30 +1,37 @@
 "use strict";
-const inputArray = ['1', '5', "10", "335", "1000"];
-let maxDiv = document.querySelector('#receive-max');
-let minDiv = document.querySelector('#receive-min');
-let mediaDiv = document.querySelector('#receive-media');
-let listDiv = document.querySelector('#lista');
+var inputArray = [1, 5, 10, 335, 100];
+var maxDiv = document.querySelector('#receive-max');
+var minDiv = document.querySelector('#receive-min');
+var mediaDiv = document.querySelector('#receive-media');
+var listDiv = document.querySelector('#lista');
 listDiv.innerHTML = inputArray.toString();
-function isANumber(arr) {
-    for (let i of arr) {
-        if (isNaN(arr[i])) {
-            console.log('Existe letras nesse array, faça com que seja somente números.');
+function isANumber(receivedArray) {
+    for (var _i = 0, receivedArray_1 = receivedArray; _i < receivedArray_1.length; _i++) {
+        var index = receivedArray_1[_i];
+        if (isNaN(receivedArray[index])) {
+            console.log('Existe letras nesse array, faça com que seja somente números.', index);
             return false;
         }
+        ;
+        return true;
     }
-    return true;
+    ;
 }
-function checkMaxAndMin(arr) {
-    if (isANumber(arr)) {
+;
+function checkMaxAndMin(receivedArray) {
+    if (isANumber(receivedArray)) {
         // high order function para somar todos os valore do array
-        const reduced = arr.reduce((acc, next) => acc + next) / arr.length;
-        // retorno do array já com valores de menor e maior
-        const output = [Math.max(...arr), Math.min(...arr), reduced];
-        maxDiv.innerHTML = Math.max(...arr).toString();
-        minDiv.innerHTML = Math.min(...arr).toString();
+        var reduced = receivedArray.reduce(function (primaryNumber, next) { return primaryNumber + next; }) / receivedArray.length;
+        // Div do HTML recebendo os valores de max, min e reduce;
+        maxDiv.innerHTML = Math.max.apply(Math, receivedArray).toString();
+        minDiv.innerHTML = Math.min.apply(Math, receivedArray).toString();
         mediaDiv.innerHTML = reduced.toString();
-        return output;
+        // retorno do array já com valores de menor e maior
+        return [Math.max.apply(Math, receivedArray), Math.min.apply(Math, receivedArray), reduced];
     }
+    ;
     return [];
 }
+;
 checkMaxAndMin(inputArray);
+console.log(checkMaxAndMin(inputArray));
