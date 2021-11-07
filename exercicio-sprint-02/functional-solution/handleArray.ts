@@ -31,50 +31,50 @@ function getBioByID(id: number, list: Array<IProgrammers>) : string {
     const programmer : IProgrammers = list.find((prog) => prog.id === id ) as IProgrammers; // encontra o id desejado
     if(programmer.id === undefined) { // se o id for inválido retorno um erro
         return "id inválido";
-    }
+    };
     return programmer.bio; // id válido retorna bio
-}
+};
 
 // ITEM B
 function getNameByID(id: number, list: Array<IProgrammers>) : string {
     const programmer : IProgrammers = list.find((prog) => prog.id === id ) as IProgrammers; // encontra o id desejado
     if(programmer.id === undefined) { // id inválido retorna erro
         return "id inválido";
-    }
+    };
     return programmer.name; // id válido retorna nome 
-}
+};
 
 // ITEM C
 function removeIdFromArray(id: number, list: Array<IProgrammers>) : Array<IProgrammers> {
     const removedProgrammer : Array<IProgrammers> = list.filter((prog) => prog.id !== id); // seleciona todos os id, excluindo o desejado
     console.log("Remove Id From Array : Functional");
     return removedProgrammer; //  retorna um array excluindo o selecionado
-}
+};
 
 // ITEM D
 // função para alterar name ou bio -- recebe 4 parametros(id, a lista, o que quer alterar * deve ser passado como string ("name" / "bio") *, e o conteudo da alteração) 
 function changeBioNameById(id: number, list: Array<IProgrammers>, toChange: string, content: string) : IProgrammers{
 
-    let findId : IProgrammers = list.find((prog) => prog.id !== id) as IProgrammers // retorna uma lista excluindo o id desejado
+    const findId : IProgrammers = list.find((prog) => prog.id !== id) as IProgrammers; // retorna uma lista excluindo o id desejado
 
-    let changed : IProgrammers = findId
+    const changed : IProgrammers = findId;
 
     if(toChange === "name") {
     
-        changed.name = content
+        changed.name = content;
 
-        return findId
+        return findId;
 
     } else if (toChange === "bio") {
 
-        changed.bio = content
+        changed.bio = content;
         
-        return findId
-    }
+        return findId;
+    };
 
-    return findId
+    return findId;
    
-}
+};
 
 console.log(`Get Bio by Id Functional = ${getBioByID(1, lista)}`);
 console.log(`Get Name by Id Functional = ${getNameByID(1, lista)}`);
