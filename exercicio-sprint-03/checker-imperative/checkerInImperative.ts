@@ -8,39 +8,39 @@ let listaDiv : HTMLDivElement = document.querySelector('#lista-imp') as HTMLDivE
 
 let maior : number = input[0];
 let menor : number = input[0];
-let acc = 0;
+let accumulated = 0;
 
-function checkIsNumber(arr : Array<number>) : boolean{
-    for(let i in arr) {
-        if(isNaN(arr[i])) {
-            console.log('Existem letras ou string nesse array, faça com que seja somente números.')
-            return false
-        }
-    }
+function checkIsNumber(receivedArray : Array<number>) : boolean{
+    for(let index in receivedArray) {
+        if(isNaN(receivedArray[index])) {
+            console.log('Existem letras ou string nesse array, faça com que seja somente números.');
+            return false;
+        };
+    };
 
-    return true
-}
+    return true;
+};
 
 
-const findMinorMajorAndMedia = (arr : Array<number>) : Array<number> | void => {
-    if(checkIsNumber(arr)) {
-        for(let index of arr) {
+const findMinorMajorAndMedia = (receivedArray : Array<number>) : Array<number> | void => {
+    if(checkIsNumber(receivedArray)) {
+        for(let index of receivedArray) {
         
             // acumula os valores dentro de acc;
-            acc += index;
+            accumulated += index;
     
             // confere se o index é menor ou maior que os atribuidos nas variaveis e atribui um novo valor caso true;
             if(index < menor) {
                 menor = index;
             } else if (index > maior){
-                maior = index
+                maior = index;
             } else {
-               index++
-            }
+               index++;
+            };
         };
     
         // media do acumulado
-        const media : number = acc / arr.length;
+        const media : number = accumulated / receivedArray.length;
         mdDiv.innerHTML = media.toString();
 
         return [maior, menor, media];

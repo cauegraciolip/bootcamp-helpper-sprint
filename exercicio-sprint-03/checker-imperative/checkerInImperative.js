@@ -1,26 +1,30 @@
 "use strict";
-const input = [10, 9, 4, 3, 7, 12, 3, 4];
-let majorDiv = document.querySelector('#receive-max-imp');
-let minorDiv = document.querySelector('#receive-min-imp');
-let mdDiv = document.querySelector('#receive-media-imp');
-let listaDiv = document.querySelector('#lista-imp');
-let maior = input[0];
-let menor = input[0];
-let acc = 0;
-function checkIsNumber(arr) {
-    for (let i in arr) {
-        if (isNaN(arr[i])) {
+var input = [10, 9, 4, 3, 7, 12, 3, 4];
+var majorDiv = document.querySelector('#receive-max-imp');
+var minorDiv = document.querySelector('#receive-min-imp');
+var mdDiv = document.querySelector('#receive-media-imp');
+var listaDiv = document.querySelector('#lista-imp');
+var maior = input[0];
+var menor = input[0];
+var accumulated = 0;
+function checkIsNumber(receivedArray) {
+    for (var index in receivedArray) {
+        if (isNaN(receivedArray[index])) {
             console.log('Existem letras ou string nesse array, faça com que seja somente números.');
             return false;
         }
+        ;
     }
+    ;
     return true;
 }
-const findMinorMajorAndMedia = (arr) => {
-    if (checkIsNumber(arr)) {
-        for (let index of arr) {
+;
+var findMinorMajorAndMedia = function (receivedArray) {
+    if (checkIsNumber(receivedArray)) {
+        for (var _i = 0, receivedArray_1 = receivedArray; _i < receivedArray_1.length; _i++) {
+            var index = receivedArray_1[_i];
             // acumula os valores dentro de acc;
-            acc += index;
+            accumulated += index;
             // confere se o index é menor ou maior que os atribuidos nas variaveis e atribui um novo valor caso true;
             if (index < menor) {
                 menor = index;
@@ -31,10 +35,11 @@ const findMinorMajorAndMedia = (arr) => {
             else {
                 index++;
             }
+            ;
         }
         ;
         // media do acumulado
-        const media = acc / arr.length;
+        var media = accumulated / receivedArray.length;
         mdDiv.innerHTML = media.toString();
         return [maior, menor, media];
     }
