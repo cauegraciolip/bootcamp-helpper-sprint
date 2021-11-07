@@ -31,33 +31,33 @@ function findBioById (id: number, list: Array<IProgrammers>) : string {
     for(let index of list) {
         if(index.id === id) {
             return bio = index.bio;
-        }
-    }
+        };
+    };
     console.log("Fing Bio using id : Imperative");
     return `Bio: ${bio}`;
-}
+};
 
 function findNameById (id: number, list : Array<IProgrammers>) : string {
     let name;
     for(let index of list) {
         if (index.id === id) {
             return name = index.name;
-        }
-    }
+        };
+    };
     console.log("Find Name using Id : Imperative");
     return `Nome: ${name}`;
-}
+};
 
 function removeThisId(id: number, list: Array<IProgrammers>) : Array<IProgrammers> {
-    let newArray = [];
+    const newArray = [];
     for(let index of list) {
         if(index.id !== id) {
             newArray.push(index);
-        }
-    }
+        };
+    };
     console.log("Remove Id from array : Imperative");
     return newArray;
-}
+};
 
 function changeThisId(id: number, list: Array<IProgrammers>, selected: string, content: string) : any {
     for(let i in list) {
@@ -65,19 +65,19 @@ function changeThisId(id: number, list: Array<IProgrammers>, selected: string, c
             let receiveChanged;
             if(selected === "name") {
                 receiveChanged = {id: list[i].id, name: content, bio: list[i].bio};
-            } 
+            }
 
             else {
                 receiveChanged = {id: list[i].id, name: list[i].name, bio: content};
 
-            }
+            };
             console.log("Changing name or bio using Id : Imperative");
             return receiveChanged;
-        }
+        };
         
-    }
+    };
 
-}
+};
 
 
 console.log(`Get Bio by Id Imperative = ${findBioById(1, listImperative)}`);
