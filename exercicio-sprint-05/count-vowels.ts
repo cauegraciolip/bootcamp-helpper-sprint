@@ -18,11 +18,11 @@ class Vowels {
      * @returns Retorna uma string que irá ser visualizada em tela.
      */
     static showVowelsCounted() : string {
-        const getVowelsCounted : number = this.counter(input.value);
-        return div.innerHTML = `Seu texto possui ${getVowelsCounted} vogal(ais).`;
+        const getVowelsCounted : number = this.counter(input.value) as number;
+        return div.innerHTML = `Seu texto possui ${getVowelsCounted} vogal(ais).` as string;
     };
 };
 
-btn.addEventListener('click', () => {
-    Vowels.showVowelsCounted();
+btn.addEventListener('click', () : Vowels => {
+    return Vowels.showVowelsCounted() as Vowels;
 });
