@@ -33,7 +33,7 @@ class Programmers {
      * @returns retorna o objeto desejado;
      */
     protected findId(id : number) : IPerson {
-        return lista.find((person) => person.id === id) as IPerson;
+        return lista.find((person : IPerson) => person.id === id) as IPerson;
     };
 
     /**
@@ -42,7 +42,7 @@ class Programmers {
      * @returns retorna os objetos diferentes do objeto desejado;
      */
     protected filterId(id : number) : Array<IPerson> {
-        return lista.filter((person) => person.id !== id) as Array<IPerson>;
+        return lista.filter((person : IPerson) => person.id !== id) as Array<IPerson>;
     }
 };
 
@@ -102,3 +102,15 @@ class EditThisId extends Programmers {
         };
     };
 };
+
+const prog1 = new FindProgrammerById().findSomeWithId(1, "name");
+console.log("Achei esse nome: ");
+console.log(prog1);
+
+const prog2 = new EraseThisIdFromList().findToErase(1);
+console.log("Id 1 não está mais na lista!");
+console.log(prog2);
+
+const prog3 = new EditThisId().editThisProgrammer(3, "name", "Cauê Palacio");
+console.log("O id escolhido foi alterado!");
+console.log(prog3);

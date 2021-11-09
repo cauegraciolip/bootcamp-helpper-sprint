@@ -104,3 +104,12 @@ class EditThisId extends Programmers {
     ;
 }
 ;
+const prog1 = new FindProgrammerById().findSomeWithId(1, "name");
+console.log("Achei esse nome: ");
+console.log(prog1);
+const prog2 = new EraseThisIdFromList().findToErase(1);
+console.log("Id 1 não está mais na lista!");
+console.log(prog2);
+const prog3 = new EditThisId().editThisProgrammer(3, "name", "Cauê Palacio");
+console.log("O id escolhido foi alterado!");
+console.log(prog3);
