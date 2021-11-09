@@ -22,17 +22,60 @@ let lista = [
     }
 ];
 class Programmers {
-    findThisWithId(id, list, search) {
-        const scientists = list.find((person) => person.id === id);
-        if (scientists.id === undefined)
-            return "ID inválido";
-        if (search = "name")
-            return scientists.name;
-        else
-            return scientists.bio;
+    findId(id) {
+        return lista.find((person) => person.id === id);
+    }
+    ;
+    filterId(id) {
+        return lista.filter((person) => person.id !== id);
+    }
+}
+;
+class FindProgrammerById extends Programmers {
+    findSomeWithId(idParameter, search) {
+        const scientist = this.findId(idParameter);
+        if (search === "name") {
+            return scientist.name;
+        }
+        else if (search === "bio") {
+            return scientist.bio;
+        }
+        else {
+            return "Essa propriedade não existe.";
+        }
+        ;
     }
     ;
 }
 ;
-const sci = new Programmers();
-console.log(sci.findThisWithId(1, lista, "name"));
+class EraseThisIdFromList extends Programmers {
+    findToErase(idParameter) {
+        const erasedId = this.filterId(idParameter);
+        return erasedId;
+    }
+    ;
+}
+;
+class EditThisId extends Programmers {
+    editThisProgrammer(idParameter, toChange, text) {
+        const receivedList = this.findId(idParameter);
+        const changed = receivedList;
+        if (toChange === "name") {
+            changed.name = text;
+            return receivedList;
+        }
+        else if (toChange === "bio") {
+            changed.bio = text;
+            return receivedList;
+        }
+        else {
+            return "Propriedade inexistente!";
+        }
+        ;
+    }
+    ;
+}
+;
+const prog1 = new EditThisId().editThisProgrammer(1, "name", "Caue");
+console.log(prog1);
+console.log(lista);

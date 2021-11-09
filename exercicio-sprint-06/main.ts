@@ -26,22 +26,79 @@ let lista : Array<IPerson> = [
     }
 ];
 
-class Programmers{
-
-    public findThisWithId(id : number, list : Array<IPerson>, search : string) : string | void {
-        const scientists = list.find((person) => person.id === id) as IPerson;
-        if(scientists.id === undefined) 
-            return "ID inválido";
-        if(search = "name")
-            return scientists.name;
-        else 
-            return scientists.bio;
+class Programmers {
+    /**
+     * Método que procura um objeto especifico a partir do id;
+     * @param id number : numero recebido para comparar com id do array lista
+     * @returns retorna o objeto desejado;
+     */
+    protected findId(id : number) : IPerson {
+        return lista.find((person) => person.id === id) as IPerson;
     };
-    
+
+    /**
+     * Método que filtra o array retornando somente os objetos diferentes ao desejado.
+     * @param id number : numero recebido para comparar com id do array da lista
+     * @returns retorna os objetos diferentes do objeto desejado;
+     */
+    protected filterId(id : number) : Array<IPerson> {
+        return lista.filter((person) => person.id !== id) as Array<IPerson>;
+    }
 };
 
-const sci : Programmers = new Programmers();
+class FindProgrammerById extends Programmers {
+    /**
+     * Método para encontrar e retornar o conteúdo da propriedade do objeto;
+     * @param idParameter number : parametro recebe o id desejado;
+     * @param search string : recebe o que se deseja retornar
+     * @returns retorna string com name ou bio;
+     */
+    public findSomeWithId(idParameter : number, search : string) : string {
+        const scientist : IPerson = this.findId(idParameter);
+        if(search === "name") {
+            return scientist.name;
+        } else if (search === "bio") {
+            return scientist.bio;
+        } else {
+            return "Essa propriedade não existe."
+        };
+    };
 
-console.log(sci.findThisWithId(1, lista, "name"));
+};
 
+class EraseThisIdFromList extends Programmers {
+    /**
+     * Método para excluir objeto a partir do id do objeto;
+     * @param idParameter number : parametro recebe o id desejado; 
+     * @returns array : retorna array com o id selecionado excluído;
+     */
+    public findToErase(idParameter : number) : Array<IPerson> {
+        const erasedId : Array<IPerson> = this.filterId(idParameter);
+        return erasedId;
+    };
+};
 
+class EditThisId extends Programmers {
+    /**
+     * Método para alterar informação do objeto a partir de parametros.
+     * @param idParameter number : parametro recebe o id desejado
+     * @param toChange string : recebe o que se deseja alterar;
+     * @param text string : recebe o texto para alteração
+     * @returns retorna o objeto com os dados alterados -- a lista original também é alterada.
+     */
+    public editThisProgrammer(idParameter : number, toChange : string, text : string) : IPerson | string {
+        const receivedList : IPerson = this.findId(idParameter);
+
+        const changed : IPerson = receivedList;
+
+        if(toChange === "name") {
+            changed.name = text;
+            return receivedList
+        } else if(toChange === "bio") {
+            changed.bio = text;
+            return receivedList;
+        } else {
+            return "Propriedade inexistente!"
+        };
+    };
+};
