@@ -1,7 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PersonFactory = void 0;
-class PersonFactory {
+exports.Person = void 0;
+class Person {
+    constructor(id, name, bio, inventorOf) {
+        this.id = id;
+        this.name = name;
+        this.bio = bio;
+        this.inventor = inventorOf;
+    }
+    ;
+    /**
+     * Método para retornar um objeto;
+     * @returns Retorna um objeto seguinte a interface IProgrammer;
+     */
+    createPerson() {
+        return { id: this.id, name: this.name, bio: this.bio, inventor: this.inventor };
+    }
+    ;
 }
-exports.PersonFactory = PersonFactory;
+exports.Person = Person;
 ;
