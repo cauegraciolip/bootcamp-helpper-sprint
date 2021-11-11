@@ -1,10 +1,7 @@
-export default class Person {
-    constructor(id, name, bio, invention) {
-        this.id = id;
-        this.name = name;
-        this.bio = bio;
-        this.invention = invention;
-    }
-    ;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PersonFactory = void 0;
+class PersonFactory {
 }
+exports.PersonFactory = PersonFactory;
 ;

@@ -1,12 +1,9 @@
-export default class Person {
-    id: number;
-    name: string;
-    bio: string;
-    invention: string;
-    constructor(id: number, name: string, bio: string, invention: string) {
-        this.id = id;
-        this.name = name;
-        this.bio = bio;
-        this.invention = invention;
-    };
+import { IPerson } from "./interface";
+
+export abstract class PersonFactory implements IPerson {
+    id!: number;
+    name!: string;
+    bio!: string;
+    invention?: string | undefined;
+    abstract showPerson(id: number, name: string, bio: string, invention: string): IPerson;
 };
