@@ -2,10 +2,10 @@ import { IPerson } from "./factory-interface";
 import { IProgrammer } from "./object-interface";
 
 export class Person implements IPerson {
-    public id: number;
-    public name: string;
-    public bio: string;
-    public inventor: string | undefined;
+    private id: number;
+    private name: string;
+    private bio: string;
+    private inventor: string | undefined;
     constructor(id: number, name: string, bio: string, inventorOf?: string) {
         this.id = id;
         this.name = name;
@@ -19,5 +19,17 @@ export class Person implements IPerson {
      */
     public createPerson() : IProgrammer {
         return {id: this.id, name: this.name, bio: this.bio, inventor: this.inventor};
+    };
+
+    get getName() : string {
+        return this.name;
+    };
+
+    get getBio() : string {
+        return this.bio;
+    };
+
+    get getInvento() : string | undefined {
+        return this.inventor;
     };
 };

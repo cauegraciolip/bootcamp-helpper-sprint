@@ -6,4 +6,3 @@ const jean = programmerFactory.getProgrammer(2, "Jean Ichbiah", "Programador fod
 
 console.log(ada);
 console.log(jean);
-

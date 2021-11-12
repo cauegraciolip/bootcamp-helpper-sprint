@@ -17,6 +17,18 @@ class Person {
         return { id: this.id, name: this.name, bio: this.bio, inventor: this.inventor };
     }
     ;
+    get getName() {
+        return this.name;
+    }
+    ;
+    get getBio() {
+        return this.bio;
+    }
+    ;
+    get getInvento() {
+        return this.inventor;
+    }
+    ;
 }
 exports.Person = Person;
 ;

@@ -1,4 +1,5 @@
 import { IProgrammer } from "./object-interface";
+import { Person } from "./person";
 
 export abstract class ProgrammerFactory {
 
@@ -8,5 +9,5 @@ export abstract class ProgrammerFactory {
      * @param name string : nome curto de algo ou alguém;
      * @param bio string : biografia ou resumo de algo ou alguém.
      */
-    protected abstract getProgrammer(id: number, name: string, bio: string) : IProgrammer;
+    protected abstract getProgrammer(id: number, name: string, bio: string, inventor: string) : Person;
 };
